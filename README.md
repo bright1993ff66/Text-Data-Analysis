@@ -6,7 +6,7 @@ Here we mainly use Python to do text data analysis. But other tools such as R an
 
 ## Step-by-Step Text Data Analysis
 
-- Constructing word vector from text
+- Construct word vector from text
 - Compute the probability of each word vector
 - Test your algorithm based on various situations
 
