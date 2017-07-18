@@ -6,6 +6,7 @@
 
 from numpy import *
 
+# Fristly, create the data set with function loadDataSet()
 def loadDataSet():
     postingList=[['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],
                  ['maybe', 'not', 'take', 'him', 'to', 'dog', 'park', 'stupid'],
@@ -17,6 +18,7 @@ def loadDataSet():
     classVec = [0,1,0,1,0,1]    #1 is abusive, 0 not
     return postingList,classVec
 
+# Create the vocabulary list 
 def createVocabList(dataSet):
     # Create a file restoring unique inappropriate words. So we should use set to store the words
     vocabSet = set([])  #create empty set
