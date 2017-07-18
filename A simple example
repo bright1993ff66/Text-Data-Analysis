@@ -1,7 +1,0 @@
-In this simple example we are going to classify whether a paticular text is rude or not. So the idea is that based on the text data set, 
-we could create a vocabulary list which shows all the vocabularies appeared in the text data. 
-
-
-Firstly we should create the text data set.
-
-'''python
