@@ -1,4 +1,4 @@
-Why text analysis?
+# Why text analysis?
 
 1. sentiment analysis
 2. spam filtering
@@ -9,6 +9,6 @@ Here is an easy example:
 
 ```python
 from nltk.tokenize import sent_tokenize
-sent_tokenize('Today is a great day, isn't it?')
+sent_tokenize('Today is a great day, isn't it\?')
 ```
 From the code above, we can split a text into seperate sentences.
