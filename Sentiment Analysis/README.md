@@ -22,8 +22,8 @@ Sentiment analysis indeed helps in understanding the user feeling and attitude o
 
 1. NLTK
 
-[GitHub](http://www.nltk.org/)
+- [NLTK Official Website](http://www.nltk.org/)
 
 2. Tensorflow
 
-[GitHub](https://www.tensorflow.org/)
+- [Tensorflow Official Website](https://www.tensorflow.org/)
