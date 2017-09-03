@@ -27,3 +27,7 @@ Sentiment analysis indeed helps in understanding the user feeling and attitude o
 2. Tensorflow
 
 - [Tensorflow Official Website](https://www.tensorflow.org/)
+
+3. scikit-learn
+
+- [scikit-learn Official Website](http://scikit-learn.org/stable/)
