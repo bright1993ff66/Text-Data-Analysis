@@ -24,7 +24,7 @@ Sentiment analysis indeed helps in understanding the user feeling and attitude o
 
 - [NLTK Official Website](http://www.nltk.org/)
 
-2. Tensorflow
+2. Tensorflow: built for GPU optimization
 
 - [Tensorflow Official Website](https://www.tensorflow.org/)
 
