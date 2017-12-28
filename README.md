@@ -6,8 +6,8 @@ Here I mainly use Python to do some downstream natural language processing tasks
 
 ## 2. My interests?
 
-- NLP based representation learning such as learning the word vectors
-- Application of language model to other related fields such as recommender system
+- NLP based representation learning such as learning the word, paragraph and document vectors
+- Application of various language models to other related fields such as recommender system
 
 ## 3. Some papers
 - Word representations
