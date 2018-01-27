@@ -41,6 +41,7 @@ Math is the core part in machine learning papers. In this part, I would get deep
 
 # 4. Other Interesting Links
 Here I give some interesting machine learning links:
-[Distill](https://distill.pub/)
-[Arxiv](http://www.arxiv-sanity.com/)
+
+1. [Distill](https://distill.pub/)
+2. [Arxiv](http://www.arxiv-sanity.com/)
 
