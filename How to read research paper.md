@@ -17,7 +17,17 @@ In the first step, our goal of reading this paper is to get a high level underst
 
 Then more specifically, how to read one paper in this step? First, we could read the title:
 
-So if you are interested in word embeddings applications in recommendation system, just go ahead and read the abstract, which could help you get a brief idea of what this paper is doing. Then I will go through the paper and read the title of each sub sections and some core sentences decribing the main ideas. At last, the conclusions and future work should also be given enough attention. If you finish this step, try to answer the above questions and if is not clear, go to read the paper again. Moreover, a warm tip is that I would also read the reference and see if I read the related papers.
+![Paper title](https://github.com/bright1993ff66/Text-Data-Analysis/blob/master/Graphs/Paper%20title.JPG)
+
+So if you are interested in word embeddings applications in recommendation system, just go ahead and read the abstract, which could help you get a brief idea of what this paper is doing:
+
+![Paper abstract](https://github.com/bright1993ff66/Text-Data-Analysis/blob/master/Graphs/Paper%20abstract.JPG)
+
+Then I will go through the paper and read the title of each sub sections and some core sentences decribing the main ideas. At last, the conclusions and future work should also be given enough attention:
+
+![Paper conclusions](https://github.com/bright1993ff66/Text-Data-Analysis/blob/master/Graphs/Paper%20conclusions.JPG)
+
+If you finish this step, try to answer the above questions and if is not clear, go to read the paper again. Moreover, a warm tip is that I would also read the reference and see if I read the related papers.
 
 After that, a great idea is to compare your opinions about this paper with other people. Here a very interesting website called [machine learning reddit](https://www.reddit.com/r/MachineLearning/) let you compare your opinions towards one paper with others and you will find some interesitng views from other researchers.
 
