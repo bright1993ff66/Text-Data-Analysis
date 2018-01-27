@@ -31,7 +31,7 @@ In the second step, I would read every English word of a paper and try to unders
 2. [Quora](https://www.quora.com/topic/Quora)
 3. [Cross Validated](https://stats.stackexchange.com/)
 
-There are also many other resources in website which could help you understand the paper. Resources such as tutorials, workshops are very benificial to your improvement in the relevant topics. Hence just google it you are bound to find many useful things.
+There are also many other resources in website which could help you understand the paper. Resources such as tutorials, workshops are very benificial to your improvement in the relevant topics. Hence just google it you are bound to find many useful things. However, I won't go through details of math in this step.
 
 In this step, I like to take notes on Jupyter Notebook and record my steps in reading this paper. It's a good habit to note your improvement in machine learning!
 
