@@ -10,7 +10,7 @@ papers to read.
 
 Generally, we should read about 10-20 papers in a week. But that does not mean that we need to understand every detail of a paper we just read. Based on the level of our interests, we should have different strategies towards those papers. Here are 3 steps which could help you succeed in reading machine learning papers.
 
-## 3.1 Get High-level Understanding and Decide If You Should Continue or Not
+## 2.1 Get High-level Understanding and Decide If You Should Continue or Not
 
 In the first step, our goal of reading this paper is to get a high level understanding of it. The following issues are waiting to be solved:
 1. The main contribution of this paper
@@ -38,7 +38,7 @@ After that, a great idea is to compare your opinions about this paper with other
 
 Ok. If you still have strong interests of this paper, go to the next step.
 
-## 3.2 Try to Read the Paper in Detail
+## 2.2 Try to Read the Paper in Detail
 
 In the second step, I would read every English word of a paper and try to understand the details of how the author solves the problem listed in the paper. Some nice papers also have github links so that I could get a deeper understanding of, for instance, the algorithm by reading the source code in the github. In this part, you should have a lot of questions. Then do not hesitate to ask questions in the following links:
 
@@ -50,11 +50,11 @@ There are also many other resources in website which could help you understand t
 
 In this step, I like to take notes on Jupyter Notebook and record my steps in reading this paper. It's a good habit to note your improvement in machine learning!
 
-## 3.3 Understand the Math
+## 2.3 Understand the Math
 
 Math is the core part in machine learning papers. In this part, I would get deep understanding of one paper by work out all the mathematical inference. It is always the most difficult step but once you finished it, you would have enough confidence to talk with other researchers about the ideas of this paper.
 
-# 4. Other Interesting Links
+# 3. Other Interesting Links
 Here I give some interesting machine learning links which could help you find interesting papers:
 
 1. [Distill](https://distill.pub/)
