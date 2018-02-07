@@ -1,3 +1,5 @@
+<h1 align="center">How to Read Research Papers?</h1>
+
 # 1. Introduction
 
 Reading research papers is sometimes difficult and very time-consuming. So the most important thing you need to guarantee is that you are 
