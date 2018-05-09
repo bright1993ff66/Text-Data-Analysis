@@ -7,6 +7,7 @@ import re
 #Get the stopwords from a local file
 stopwords_from_file = open('F:\Data Analysis\github\THUCNews\data\stopwords.txt','r').readlines()
 stopwords = [re.sub('  \n','',char) for char in stopwords_from_file]
+stopwords = set(stopwords)
 
 def raw_to_words(raw, remove_stopwords = False):
     
@@ -26,7 +27,6 @@ def raw_to_words(raw, remove_stopwords = False):
     
     #4. Remove stopwords
     if remove_stopwords:
-        stopwords = set(stopwords)
         result = [word for word in Chinese_seg if word not in stopwords]
     else:
         result = Chinese_seg
