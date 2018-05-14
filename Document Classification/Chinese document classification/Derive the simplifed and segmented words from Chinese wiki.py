@@ -1,11 +1,9 @@
 """
 Date: 2018 - 05 - 13
-Codes and more specific guidance could be found in this site: 
-https://www.jianshu.com/p/ec27062bd453
-The zh_wiki and langconv modules, which are used for transforming 
-the complex Chinese to the simplified Chinese, could be found in
+1. Codes and more specific guidance could be found in this blog: https://www.jianshu.com/p/ec27062bd453
+2. The zh_wiki and langconv modules, which are used for transforming the complex Chinese to the simplified Chinese, could be found in
 here: https://github.com/skydark/nstools/tree/master/zhtools
-Data: The data could be found in here：http://thuctc.thunlp.org/
+3. Data: The data could be found in here：http://thuctc.thunlp.org/
 """
 
 # Import the modules
