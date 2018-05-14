@@ -1,9 +1,11 @@
 """
 Date: 2018 - 05 - 13
-1. Codes and more specific guidance could be found in this blog: https://www.jianshu.com/p/ec27062bd453
-2. The zh_wiki and langconv modules, which are used for transforming the complex Chinese to the simplified Chinese, could be found in
+Codes and more specific guidance could be found in this site: 
+https://www.jianshu.com/p/ec27062bd453
+The zh_wiki and langconv modules, which are used for transforming 
+the complex Chinese to the simplified Chinese, could be found in
 here: https://github.com/skydark/nstools/tree/master/zhtools
-3. Data: The data could be found in here：http://thuctc.thunlp.org/
+Data: The data could be found in here：http://thuctc.thunlp.org/
 """
 
 # Import the modules
@@ -19,8 +21,8 @@ import jieba.posseg as pseg
 
 from gensim.corpora import WikiCorpus
 
-# Export all the Chinese words in the xml file into a txt file
 if __name__ == '__main__':
+	# Export all the Chinese words in the xml file into a txt file
     program = 'F:\Data Analysis\github\THUCNews\Codes\Get Chinese word vectors from wiki.py'
     logger = logging.getLogger(program)
  
