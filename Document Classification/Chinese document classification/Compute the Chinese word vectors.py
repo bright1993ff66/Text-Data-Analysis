@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8  -*-
-
 import warnings
 warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')# neglect the warnings
 
