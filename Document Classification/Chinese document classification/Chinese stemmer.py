@@ -6,12 +6,7 @@
 import jieba
 import os
 import logging
-import sys
-
-def line2word(line):
-    line_list = jieba.lcut(line, cut_all = False)
-    return line_list
-       
+import sys  
 
 if __name__ == '__main__':
     program = os.path.basename(sys.argv[0])
