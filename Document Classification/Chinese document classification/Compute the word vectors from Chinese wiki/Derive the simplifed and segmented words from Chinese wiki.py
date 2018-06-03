@@ -35,7 +35,7 @@ if __name__ == '__main__':
         sys.exit(1)
         
     data_file_path = 'F:\Data Analysis\github\THUCNews\data\zhwiki-latest-pages-articles.xml.bz2'
-	output_path = 'F:\Data Analysis\github\THUCNews\data\zhwiki.txt'
+    output_path = 'F:\Data Analysis\github\THUCNews\data\zhwiki.txt'
 
     inp, outp = data_file_path, output_path
     space = " "
@@ -54,40 +54,40 @@ if __name__ == '__main__':
     output.close()
     logger.info("Finished Saved "+str(i)+" articles.")
 
-	# Transform the complex Chinese to the simplified Chinese
-	file_to_be_processed = 'F:\Data Analysis\github\THUCNews\data\zhwiki.txt'
-	output_file_path = 'F:\Data Analysis\github\THUCNews\data\zhwiki_simple.txt'
-	output = open(output_file_path, 'w', encoding = 'UTF-8')
+    # Transform the complex Chinese to the simplified Chinese
+    file_to_be_processed = 'F:\Data Analysis\github\THUCNews\data\zhwiki.txt'
+    output_file_path = 'F:\Data Analysis\github\THUCNews\data\zhwiki_simple.txt'
+    output = open(output_file_path, 'w', encoding = 'UTF-8')
 
-	i = 0
-	
-	with open(file_to_be_processed, mode = 'r', encoding = 'UTF-8') as f:
-	    for line in f:
-	        output.write(cht_to_chs(line))
-	        i = i+1
-	        if (i % 10000 == 0):
-	            logger.info("Saved "+str(i)+" articles.")
-	        
-	    output.close()
-		logger.info("Finished Saved "+str(i)+" articles.")
-	
-	# Segment the words using jieba
-	file_to_be_stemmed = open('F:\Data Analysis\github\THUCNews\data\zhwiki_simple.txt', mode = 'r', encoding = 'UTF-8')
-	output_file = open('F:\Data Analysis\github\THUCNews\data\zhwiki_simple.txt', mode = 'w', encoding = 'UTF-8')
-	print('The file is opened~')
+    i = 0
+    
+    with open(file_to_be_processed, mode = 'r', encoding = 'UTF-8') as f:
+        for line in f:
+            output.write(cht_to_chs(line))
+            i = i+1
+            if (i % 10000 == 0):
+                logger.info("Saved "+str(i)+" articles.")
+            
+        output.close()
+    	logger.info("Finished Saved "+str(i)+" articles.")
+    
+    # Segment the words using jieba
+    file_to_be_stemmed = open('F:\Data Analysis\github\THUCNews\data\zhwiki_simple.txt', mode = 'r', encoding = 'UTF-8')
+    output_file = open('F:\Data Analysis\github\THUCNews\data\zhwiki_simple.txt', mode = 'w', encoding = 'UTF-8')
+    print('The file is opened~')
 
-	lineNum = 1
-	line = file_to_be_stemmed.readline()
+    lineNum = 1
+    line = file_to_be_stemmed.readline()
 
-	while line:
-	    print('Line(article) ', lineNum, 'is processing')
-	    segmentation = jieba.cut(line, cut_all = False)
-	    line_seg = ' '.join(segmentation)
-	    output_file.writelines(line_seg)
-	    lineNum += 1
-	    line = file_to_be_stemmed.readline()
-	    
-	print('finished')
-	file_to_be_stemmed.close()
-	output_file.close()
+    while line:
+        print('Line(article) ', lineNum, 'is processing')
+        segmentation = jieba.cut(line, cut_all = False)
+        line_seg = ' '.join(segmentation)
+        output_file.writelines(line_seg)
+        lineNum += 1
+        line = file_to_be_stemmed.readline()
+        
+    print('finished')
+    file_to_be_stemmed.close()
+    output_file.close()
 		
