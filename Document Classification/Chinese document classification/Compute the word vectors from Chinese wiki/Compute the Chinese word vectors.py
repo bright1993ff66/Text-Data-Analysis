@@ -29,6 +29,7 @@ if __name__ == '__main__':
     outp2 = fdir + r'data/wiki.zh.text.vector'
 
     # Skip-gram model
+    # The LineSentence function transforms the current format of a txt file to a format that each line is composed of one sentence
     model = Word2Vec(LineSentence(inp), size=400, window=5, min_count=5,
                      workers=multiprocessing.cpu_count())
 
