@@ -14,16 +14,22 @@ import pandas as pd
 import gensim
 import re
 
+"""
 from mxnet import nd
 from mxnet.contrib import text
+"""
 
 # Compute the word vector for each word in a word list
 def ComputeWordVecs(model, WordList):
     vectors = []
     for word in WordList:
-        vec = model.get_vecs_by_tokens([word]).asnumpy()
-        vectors.append(vec)
-    return vectors
+        word = word.replace('\n','')
+        try:
+            vec = model([word])
+            vectors.append(vec)
+        except:
+            continue
+    return np.array(vectors, dtype = np.float32)
 
 # Get the representation for a file
 def buildVecs(model, filename):
@@ -58,6 +64,7 @@ if __name__ == '__main__':
 
     inps = [furniture_inp, education_inp, science_inp]
 
+    """
     # Use the mxnet counter to compute the word embedding
     text_data = ''
     for file in inps:
@@ -70,11 +77,15 @@ if __name__ == '__main__':
     my_vocab = text.vocab.Vocabulary(counter)
     my_embedding = text.embedding.create('fasttext',
             pretrained_file_name='wiki.zh.vec',vocabulary=my_vocab)
+            
+    """
+    # Load the model
+    model = gensim.models.Word2Vec.load(fdir + r'Codes/wiki.zh.text.model')
 
     # Build the vectors
-    furniture_vecs = buildVecs(my_embedding, furniture_inp)
-    education_vecs = buildVecs(my_embedding, education_inp)
-    science_vecs = buildVecs(my_embedding, science_inp)
+    furniture_vecs = buildVecs(model, furniture_inp)
+    education_vecs = buildVecs(model, education_inp)
+    science_vecs = buildVecs(model, science_inp)
 
     # Use 0 for furniture, 1 for education, 2 for science
     twos = [2]*len(science_vecs)
