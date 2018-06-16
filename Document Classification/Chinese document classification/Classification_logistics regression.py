@@ -12,9 +12,6 @@ import sys
 import time
 import numpy as np
 
-from mxnet import nd
-from mxnet.contrib import text
-
 from scipy.sparse import coo_matrix
 from sklearn.utils import shuffle
 from sklearn import metrics
