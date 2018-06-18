@@ -1,4 +1,4 @@
-# Date: 2018 - 06 - 14
+# Date: 2018 - 06 - 18
 # Author: Haoliang Chang
 # Data: The data could be found in here：http://thuctc.thunlp.org/
 # Reference: https://www.jianshu.com/p/233da896226a
@@ -6,9 +6,6 @@
 import warnings
 warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')
 
-import logging
-import os.path
-import sys
 import time
 import numpy as np
 
@@ -18,8 +15,6 @@ from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.linear_model import LogisticRegression
-
-from matplotlib import pyplot as plt
 
 # Load the data and label
 threed_data = np.load('all_data_X.npy')
@@ -36,8 +31,16 @@ X_train_plus, X_test, y_train_plus, y_test = train_test_split(data, label, test_
 X_train, X_validation, y_train, y_validation = train_test_split(X_train_plus, y_train_plus, test_size = 0.25,
                                                                 random_state = 0)
 
-# logistics regression
+# Save the training data, validation data and the test data
+outpdir = r'F:\Data Analysis\github\THUCNews\data'
+np.save(outpdir + r'\X_train', X_train)
+np.save(outpdir + r'\X_validation', X_validation)
+np.save(outpdir + r'\X_test', X_test)
+np.save(outpdir + r'\y_train', y_train)
+np.save(outpdir + r'\y_validation', y_validation)
+np.save(outpdir + r'\y_test', y_test)
 
+# Just a warm up: Use the logistics regression to complete this document classification task
 print('Logistics Regression starts(validation).....')
 
 start = time.time()
@@ -60,7 +63,7 @@ print('The f1 score for the validation set is: ', f1_score_validation, '\n')
 print('The precision score is: ', precision_lr_validation)
 
 # Predict the test set
-print('Logistics Regression starts(test).....')
+print('\nLogistics Regression starts(test).....')
 
 result_test = multiC.fit(X_train, y_train).predict(X_test)
 true_test = np.array(y_test)
