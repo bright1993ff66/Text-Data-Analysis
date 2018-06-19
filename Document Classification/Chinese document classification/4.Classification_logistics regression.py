@@ -1,20 +1,31 @@
 # Date: 2018 - 06 - 18
 # Author: Haoliang Chang
 # Data: The data could be found in here：http://thuctc.thunlp.org/
-# Reference: https://www.jianshu.com/p/233da896226a
-
-import warnings
-warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')
-
 import time
 import numpy as np
+from collections import Counter
 
 from scipy.sparse import coo_matrix
 from sklearn.utils import shuffle
 from sklearn import metrics
+from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.linear_model import LogisticRegression
+
+from imblearn.under_sampling import NearMiss
+from imblearn.pipeline import make_pipeline as make_pipeline_imb
+from imblearn.metrics import classification_report_imbalanced
+
+
+# print_results function helps us output the metrics for the model evaluation
+def print_results(headline, true_value, pred):
+    print(headline)
+    print("accuracy: {}".format(metrics.accuracy_score(true_value, pred)))
+    print("precision: {}".format(metrics.precision_score(true_value, pred, average='micro')))
+    print("recall: {}".format(metrics.recall_score(true_value, pred, average='micro')))
+    print("f1: {}".format(metrics.f1_score(true_value, pred, average='micro')))
+
 
 # Load the data and label
 threed_data = np.load('all_data_X.npy')
@@ -40,40 +51,62 @@ np.save(outpdir + r'\y_train', y_train)
 np.save(outpdir + r'\y_validation', y_validation)
 np.save(outpdir + r'\y_test', y_test)
 
-# Just a warm up: Use the logistics regression to complete this document classification task
+# Just a warm up: Use the logistics regression to complete this Chinese document classification task
+# We first use the training data to train the model and apply the model to the validation data
+print('===============================Without Undersampling Starts===============================')
 print('Logistics Regression starts(validation).....')
 
 start = time.time()
 
-lr = LogisticRegression(C=40, random_state=0)
-multiC = OneVsRestClassifier(estimator=lr)
-validation_result= multiC.fit(X_train, y_train).predict(X_validation)
+classifier = LogisticRegression
+pipeline = make_pipeline(classifier(C=40, random_state=0))
+multiC = OneVsRestClassifier(estimator=pipeline)
+validation_result = multiC.fit(X_train, y_train).predict(X_validation)
 true_validation = np.array(y_validation)
-
-# Calculating the precision score for the validation set
-precision_lr_validation = metrics.precision_score(true_validation, validation_result, average = 'micro')
-
-# Calculating the F1 score for the test set
-f1_score_validation = metrics.f1_score(true_validation, validation_result, average = 'micro')
 
 end = time.time()
 
-print('Total time for training is: ', end - start, ' seconds\n')
-print('The f1 score for the validation set is: ', f1_score_validation, '\n')
-print('The precision score is: ', precision_lr_validation)
+print('Total time - Without Undersampling: ', end - start, ' seconds\n')
+print(metrics.classification_report(y_validation, validation_result))
+print()
+print('Without Undersampling -  Pipeline Score {}'.format(multiC.fit(X_train, y_train).score(X_validation, y_validation)))
+print()
+print_results("Without Undersampling - Validation set: ", true_validation, validation_result)
 
-# Predict the test set
+# Predict the test data
 print('\nLogistics Regression starts(test).....')
 
 result_test = multiC.fit(X_train, y_train).predict(X_test)
 true_test = np.array(y_test)
 
-precision_lr_test = metrics.precision_score(true_test, result_test, average = 'micro')
+print_results("Without Undersampling - Test set: ", true_test, result_test)
 
-f1_score_test= metrics.f1_score(true_test, result_test, average = 'micro')
+print('===============================Without Undersampling Ends===============================\n')
 
-print('The f1 score for the test set is: ', f1_score_test, '\n')
-print("The precision score for the test set is: ", precision_lr_test)
+print('===============================With Undersampling Starts===============================\n')
 
+start = time.time()
 
+# build model with undersampling
+nearmiss_pipeline = make_pipeline_imb(NearMiss(random_state=0), multiC)
+nearmiss_model = nearmiss_pipeline.fit(X_train, y_train)
+nearmiss_prediction = nearmiss_model.predict(X_validation)
 
+end = time.time()
+
+# Print the distribution of labels about both models
+print()
+print("Without Undersampling - data distribution: {}".format(Counter(y_train)))
+X_nearmiss, y_nearmiss = NearMiss(random_state = 0).fit_sample(X_train, y_train)
+print("With Undersampling - data distribution: {}".format(Counter(y_nearmiss)))
+print()
+
+# Here comes the result with Undersampling
+print('Total time - With Undersampling: ', end - start, ' seconds\n')
+print(classification_report_imbalanced(y_validation, nearmiss_prediction))
+print()
+print('NearMiss Pipeline Score {}'.format(nearmiss_pipeline.score(X_validation, y_validation)))
+print()
+print_results("NearMiss classification", y_validation, nearmiss_prediction)
+
+print('===============================With Undersampling Ends===============================\n')
