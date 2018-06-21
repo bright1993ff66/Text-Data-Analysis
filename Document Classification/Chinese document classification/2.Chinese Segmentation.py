@@ -19,21 +19,22 @@ if __name__ == '__main__':
              '科技_altogether.txt']
 
     for file in files:
-        # Segment the words using jieba
-        file_to_be_stemmed = open(file_path + file, mode = 'r', encoding = 'UTF-8')
-        output_file = open(file_path + file + '_stemmed.txt', mode = 'w', encoding = 'UTF-8')
+        # Set the input and output files
+        file_to_be_segmented = open(file_path + file, mode = 'r', encoding = 'UTF-8')
+        output_file = open(file_path + file + '_segmented.txt', mode = 'w', encoding = 'UTF-8')
         print('The file is opened~')
         lineNum = 1
-        line = file_to_be_stemmed.readline()
+        line = file_to_be_segmented.readline()
         
+        # Segment the words using jieba
         while line:
             print('Line(article) ', lineNum, 'is processing')
             segmentation = jieba.cut(line, cut_all = False)
             line_seg = ' '.join(segmentation)
             output_file.writelines(line_seg)
             lineNum += 1
-            line = file_to_be_stemmed.readline()
+            line = file_to_be_segmented.readline()
 
         print('finished', file)
-        file_to_be_stemmed.close()
+        file_to_be_segmented.close()
         output_file.close()
