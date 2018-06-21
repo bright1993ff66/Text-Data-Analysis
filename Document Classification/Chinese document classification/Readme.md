@@ -128,7 +128,7 @@ def buildVecs(model, filename):
     return fileVecs
 ```
 
-5. Classify the documents
+# 5. Classify the documents
 
 Here we first use the logistics regression to do the classification. Since this task is a multi-class classification, we should use the multi-class classification API OneVsRestClassifier in scikit-learn:
 
