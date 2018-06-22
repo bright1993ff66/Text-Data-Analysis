@@ -7,7 +7,7 @@ Here I will do some Chinese document classification based on a real-world datase
 # 1.1 Documents
 The dataset can be found in here [THUCTC](http://thuctc.thunlp.org/), which is made by Natural Language Processing and Computational Social Science Lab, Tsinghua University. The dataset is huge so I will only select three categories of text data(家居,教育,科技) and do the document classification. 
 # 1.2 Chinese Stopwords
-The common Chinese stopwords can be downloaded in here: [Chinese Stopwords](https://github.com/bright1993ff66/Text-Data-Analysis/blob/master/Document%20Classification/Chinese%20document%20classification/data/stopwords.txt), which is created by Institute of Computing Technology,Chinese Academy of Sciences.
+The common Chinese stopwords can be downloaded in here: [Chinese Stopwords](https://github.com/bright1993ff66/Text-Data-Analysis/blob/master/Document%20Classification/Chinese%20document%20classification/data/stopwords.txt), which is created by Institute of Computing Technology, Chinese Academy of Sciences.
 
 # 2. Data Preprocessing
 
@@ -130,12 +130,12 @@ def buildVecs(model, filename):
 
 # 5. Classify the documents
 
-Here we first use the logistics regression to do the classification. Since this task is a multi-class classification, we should use the multi-class classification API OneVsRestClassifier in scikit-learn:
+Here we first use the logistics regression to do the classification. Since this task is a multi-class classification, we should import the multi-class classification API OneVsRestClassifier in scikit-learn:
 
 ```Python
 from sklearn.multiclass import OneVsRestClassifier
 ```
-We also notice that the data is also imbalanced, we use the imblearn module to cope with this issue:
+We also notice that the data is also imbalanced. So we use the **imblearn** module to cope with this issue:
 
 ```Python
 from imblearn.under_sampling import NearMiss
