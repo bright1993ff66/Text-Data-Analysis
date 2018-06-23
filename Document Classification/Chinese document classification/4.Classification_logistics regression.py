@@ -18,7 +18,7 @@ from imblearn.pipeline import make_pipeline as make_pipeline_imb
 from imblearn.metrics import classification_report_imbalanced
 
 
-# print_results function helps us output the metrics for the model evaluation
+# print_results function helps us output the metrics for the model performance
 def print_results(headline, true_value, pred):
     print(headline)
     print("accuracy: {}".format(metrics.accuracy_score(true_value, pred)))
@@ -30,14 +30,14 @@ def print_results(headline, true_value, pred):
 # Load the data and label
 threed_data = np.load('all_data_X.npy')
 label_from_file = np.load('all_data_Y.npy')
-
-twod_data = threed_data.transpose(0,2,1).reshape(len(label_from_file),-1) # Convert a 3D array to a 2D array
+# .transpose is needed when you want to for instance transform a [2,0,1] array to a [2,1] array
+twod_data = threed_data.transpose(0,2,1).reshape(len(label_from_file),-1)
 
 # Random shuffle the data and the label
 twod_data_sparse = coo_matrix(twod_data)
 data, data_sparse, label = shuffle(twod_data, twod_data_sparse, label_from_file, random_state = 0)
 
-# All the text data should be categorized into training set, validation set, test set
+# All the text data should be categorized into training set, validation set, and test set
 X_train_plus, X_test, y_train_plus, y_test = train_test_split(data, label, test_size = 0.2, random_state = 0)
 X_train, X_validation, y_train, y_validation = train_test_split(X_train_plus, y_train_plus, test_size = 0.25,
                                                                 random_state = 0)
@@ -52,9 +52,8 @@ np.save(outpdir + r'\y_validation', y_validation)
 np.save(outpdir + r'\y_test', y_test)
 
 # Just a warm up: Use the logistics regression to complete this Chinese document classification task
-# We first use the training data to train the model and apply the model to the validation data
+# We first train the data without undersampling and see how it performs in the validation set
 print('===============================Without Undersampling Starts===============================')
-print('Logistics Regression starts(validation).....')
 
 start = time.time()
 
@@ -73,17 +72,9 @@ print('Without Undersampling -  Pipeline Score {}'.format(multiC.fit(X_train, y_
 print()
 print_results("Without Undersampling - Validation set: ", true_validation, validation_result)
 
-# Predict the test data
-print('\nLogistics Regression starts(test).....')
-
-result_test = multiC.fit(X_train, y_train).predict(X_test)
-true_test = np.array(y_test)
-
-print_results("Without Undersampling - Test set: ", true_test, result_test)
-
 print('===============================Without Undersampling Ends===============================\n')
 
-print('===============================With Undersampling Starts===============================\n')
+print('================================With Undersampling Starts===============================\n')
 
 start = time.time()
 
@@ -92,14 +83,14 @@ nearmiss_pipeline = make_pipeline_imb(NearMiss(random_state=0), multiC)
 nearmiss_model = nearmiss_pipeline.fit(X_train, y_train)
 nearmiss_prediction = nearmiss_model.predict(X_validation)
 
-end = time.time()
-
 # Print the distribution of labels about both models
 print()
 print("Without Undersampling - data distribution: {}".format(Counter(y_train)))
 X_nearmiss, y_nearmiss = NearMiss(random_state = 0).fit_sample(X_train, y_train)
 print("With Undersampling - data distribution: {}".format(Counter(y_nearmiss)))
 print()
+
+end = time.time()
 
 # Here comes the result with Undersampling
 print('Total time - With Undersampling: ', end - start, ' seconds\n')
@@ -110,3 +101,17 @@ print()
 print_results("NearMiss classification", y_validation, nearmiss_prediction)
 
 print('===============================With Undersampling Ends===============================\n')
+
+print('=======================Test set prediction using Undersampling========================\n')
+
+# Predict the test data
+print('\nLogistics Regression starts(test).....')
+
+result_test = nearmiss_model.predict(X_test)
+true_test = np.array(y_test)
+
+print(classification_report_imbalanced(true_test, result_test))
+print()
+print('NearMiss Pipeline Score {}'.format(nearmiss_pipeline.score(X_test, y_test)))
+print()
+print_results("NearMiss classification", true_test, result_test)
