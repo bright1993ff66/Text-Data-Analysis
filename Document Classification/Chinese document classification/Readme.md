@@ -69,7 +69,7 @@ for file in files:
         output_file.close()
 ```
 
-# 3. Get the pre-trained word embedding
+# 3. Get the Pre-trained Word Embedding
 
 There are mainly two ways to get the pre-trained word embedding:
 
@@ -89,7 +89,7 @@ There are mainly two ways to get the pre-trained word embedding:
   
   For more information, you could go to [MXNet text API official website](http://mxnet.incubator.apache.org/api/python/contrib/text.html) and read more details.
   
-# 4. Get the representation of each text file.
+# 4. Get the Representation of Each Text File.
 
 In each category of our data(such as '科技'), we could see many text files:
 
@@ -128,7 +128,7 @@ def buildVecs(model, filename):
     return fileVecs
 ```
 
-# 5. Classify the documents
+# 5. Model Selection
 
 Here we first use the logistics regression to do the classification. Since this task is a multi-class classification, we should import the multi-class classification API OneVsRestClassifier in scikit-learn:
 
@@ -149,3 +149,9 @@ And here is the result with undersampling:
 ![with undersampling.JPG](https://github.com/bright1993ff66/Text-Data-Analysis/blob/master/Document%20Classification/Chinese%20document%20classification/Pictures/With%20undersampling.JPG)
 
 From the results above, I would say that the performance has improved. Because we could see that the recall values of the categories with smaller amount of data increase. Even though the F1 score decreases, I think the model with undersampling is better.
+
+# 6. Test Set Performance
+
+We apply the logistics regression with undersampling to the test set. The result is the following:
+
+![Test set performance.JPG](https://github.com/bright1993ff66/Text-Data-Analysis/blob/master/Document%20Classification/Chinese%20document%20classification/Pictures/Test%20set%20performance.JPG)
