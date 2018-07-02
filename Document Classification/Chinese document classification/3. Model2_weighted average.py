@@ -1,7 +1,7 @@
 # Date: 2018 - 07 - 02
 # Author: Haoliang Chang
 # Data: The data could be found in here：http://thuctc.thunlp.org/
-# Reference: https://www.jianshu.com/p/233da896226a
+# Reference: https://openreview.net/pdf?id=SyK00v5xx
 
 import warnings
 
