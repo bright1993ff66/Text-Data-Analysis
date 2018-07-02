@@ -1,4 +1,4 @@
-# Date: 2018 - 06 - 24
+# Date: 2018 - 07 - 02
 # Author: Haoliang Chang
 # Data: The data could be found in here：http://thuctc.thunlp.org/
 
@@ -17,14 +17,12 @@ if __name__ == '__main__':
     logging.basicConfig(format='%(asctime)s: %(levelname)s: %(message)s', level=logging.INFO)
     logger.info("running %s" % ' '.join(sys.argv))
 
-    # Load the data
-    furniture_inp = fdir + r'data/家居_altogether.txt_stemmed.txt'
-    education_inp = fdir + r'data/教育_altogether.txt_stemmed.txt'
-    science_inp = fdir + r'data/科技_altogether.txt_stemmed.txt'
+    # Load the Chinese wiki corpora 
+    wiki_inp = fdir + r'data/zhwiki_simple_stemmed.txt'
 
-    inps = [furniture_inp, education_inp, science_inp]
+    inps = [wiki_inp]
 
-    # Use the mxnet counter to compute the word embedding
+    # Use the mxnet counter to create the dictionary
     text_data = ''
     for file in inps:
         text_file = open(file, mode='r', encoding='UTF-8')
@@ -35,7 +33,8 @@ if __name__ == '__main__':
     text_data.encode('UTF-8')
     counter = text.utils.count_tokens_from_str(text_data, token_delim=' ')
     my_vocab = dict(counter)
-
+    
+    # Use pickle to write the dictionary to a local file
     output_dir = open(fdir + r'Codes/my_vocab.pkl', mode = 'wb+')
     pickle.dump(my_vocab, output_dir)
 
