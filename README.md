@@ -1,8 +1,8 @@
 # Text Data Analysis
 
-## 1. Description
+## 1. Description.
 
-Here I mainly use Python to do some downstream natural language processing tasks.
+Here is a repository to save some useful classes, functions needed to conduct the text analysis
 
 ## 2. My interests?
 
