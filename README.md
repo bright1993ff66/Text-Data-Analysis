@@ -2,25 +2,26 @@
 
 ## 1. Description.
 
-Here is a repository to save some useful classes, functions needed to conduct the text analysis
+This repository contains some classes, functions in natural language processing and social media data analysis.
 
-## 2. My interests?
+I mostly work on processing the English and Chinese in research.
 
-- NLP based representation learning such as learning the word, paragraph and document vectors
-- Application of various language models to other related fields such as recommender system
+## 2. Structure
 
-## 3. Some papers
-- Word representations
-1. [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/pdf/1301.3781.pdf)
-2. [Distributed Representations of Words and Phrases and their Compositionality](https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf)
-3. [How to generate good word embedding?](https://arxiv.org/pdf/1507.05523.pdf)
+- Tasks: some NLP tasks I have done including sentiment analysis, document classification, etc.
+- Figures: figures for the Readme.md
+- Modules: Some useful classes and functions
 
-- NLP and recommender system
-1. [NLP-based Course Clustering and Recommendation](http://courses.ischool.berkeley.edu/i256/f09/Final%20Projects%20write-ups/Suzuki_Park_project_final.pdf)
-2. [Deep Learning based Recommender System: A Survey and New Perspectives](https://arxiv.org/pdf/1707.07435.pdf)
+## 3. Tools I always use
 
-## 4. Tools I always use
-1. [NLTK](http://www.nltk.org/)
-2. [gensim](https://radimrehurek.com/gensim/)
-3. [scikit-learn](http://scikit-learn.org/stable/)
-4. [tensorflow](https://www.tensorflow.org/)
+- Deep learning frameworks
+  - [tensorflow](https://www.tensorflow.org/)
+  - [pytorch](https://pytorch.org/)
+- NLP modules
+  - [SpaCy](https://spacy.io/)
+  - [Gensim](https://radimrehurek.com/gensim/)
+  - [huggingface transformers](https://github.com/huggingface/transformers)
+- Some great GitHub resources
+  - [funNLP](https://github.com/fighting41love/funNLP)
+  - [Chinese-Word-Vectors](https://github.com/Embedding/Chinese-Word-Vectors)
+
