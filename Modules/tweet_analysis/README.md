@@ -11,3 +11,9 @@ This folder contains the classes, functions used to conduct the tweet data analy
 
 To be continued...
 
+## 2. Resources
+
+Python packages for plot:
+
+- [matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/): For basic plots
+- [folium](https://python-visualization.github.io/folium/): Manipulate your data in Python, then visualize it on a **Leaflet interactive map**.
